@@ -45,3 +45,8 @@ cluster was downloaded from the digitalocean provider and you should have an acc
 To test it, we can issue the following command from the `ops/terraform` directory:
 
 `kubectl --kubeconfig config/[workspace]-kubeconfig.yaml get pods,services`
+
+## Rolling Updates
+
+Simply cd into `ops/terraform` modifiy the docker image version and run `terraform apply`, 
+ideally you change this version using a pipeline that exports a `TF_VAR_backend_pod_image` env variable with the value of the latest image built.
