@@ -5,7 +5,9 @@ This repository provide a kubernetes cluster with access to dockerhub private re
 To do so just increase `cluster_node_count` variable.
 The `src` directory will be packaged into a docker image and pushed to a dockerhub. 
 
-Do note that on the first run the creation of the cluster on digitalocean can take up to 20min.
+Do note that on the first run the creation of the cluster on digitalocean can take up to `20min`.
+
+This setup goal is to create a kubernetes cluster for each environment - `staging` or `production`, depending on the chosen workspace, defaults to `staging`.
 
 ## Todo
 
@@ -53,5 +55,5 @@ To test it, we can issue the following command from the `ops/terraform` director
 
 ## Rolling Updates
 
-Simply cd into `ops/terraform` modifiy the docker image version and run `terraform apply`, 
+Simply cd into `ops/terraform` modifiy the docker image (`backend_pod_image`) and run `terraform apply`, 
 ideally you change this version using a pipeline that exports a `TF_VAR_backend_pod_image` env variable with the value of the latest image built.
