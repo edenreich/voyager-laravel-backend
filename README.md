@@ -5,7 +5,11 @@ This repository provide a kubernetes cluster with access to dockerhub private re
 To do so just increase `cluster_node_count` variable.
 The `src` directory will be packaged into a docker image and pushed to a dockerhub. 
 
-Do note that the creation of the cluster on digitalocean can take up to 20min.
+Do note that on the first run the creation of the cluster on digitalocean can take up to 20min.
+
+## Todo
+
+ [ ] Add a managed RDS instance.
 
 ## Technologies
 
@@ -17,6 +21,7 @@ Do note that the creation of the cluster on digitalocean can take up to 20min.
 ## Authentication
 
 Before you begin you have to make sure that terraform is authenticated with digitalocean: `export TF_VAR_do_token='[digitalocean-access-token]'`.
+Also make sure that your computer is authenticated with dockerhub. (a `~/.docker/config` file should be present, this will be uploaded as a secret to kubernetes cluster, for pulling private images from your dockerhub registry).
 
 ## Deploy to Staging
 
