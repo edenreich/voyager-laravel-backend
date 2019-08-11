@@ -3,6 +3,10 @@ variable "do_access_token" {
     type = "string"
 }
 
+variable "do_region" {
+    type = "string"
+}
+
 variable "backend_pod_name" {
     default = "backend"
     type    = "string"
@@ -26,6 +30,10 @@ variable "cluster_node_count" {
 variable "deployment_replicas_count" {
     default = "1"
     type    = "string"
+}
+
+variable "mysql_password" {
+    type = "string"
 }
 
 
