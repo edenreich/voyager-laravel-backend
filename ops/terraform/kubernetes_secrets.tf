@@ -10,3 +10,13 @@ resource "kubernetes_secret" "docker_config" {
 
   type = "kubernetes.io/dockerconfigjson"
 }
+
+resource "kubernetes_secret" "mysql" {
+  metadata {
+    name = "mysql-pass"
+  }
+
+  data = {
+    password = "${var.mysql_password}"
+  }
+}

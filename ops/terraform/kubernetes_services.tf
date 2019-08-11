@@ -19,3 +19,26 @@ resource "kubernetes_service" "backend" {
       type = "NodePort"
   }
 }
+
+resource "kubernetes_service" "mysql" {
+  metadata {
+    name = "${var.backend_service_name}"
+    namespace = "default"
+    labels = {
+      app = "${var.backend_service_name}"
+    }
+  }
+
+  spec {
+    port {
+      port        = 3306
+      target_port = 3306
+    }
+
+    selector = {
+      app  = "${kubernetes_deployment.backend.metadata.0.labels.app}"
+    }
+
+    cluster_ip = "None"
+  }
+}
