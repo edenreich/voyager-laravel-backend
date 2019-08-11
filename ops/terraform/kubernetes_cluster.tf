@@ -1,7 +1,7 @@
 
 module "digitalocean_kubernetes_cluster" {
   source             = "github.com/edenreich/terraform-digitalocean-kubernetes-cluster"
-  do_token           = "${var.do_access_token}"
+  do_access_token    = "${var.do_access_token}"
   do_region          = "fra1"
   cluster_name       = "${terraform.workspace == "default" ? "staging" : "production"}"
   cluster_pool_name  = "${terraform.workspace == "default" ? "staging" : "production"}"
