@@ -1,5 +1,5 @@
 
-variable "do_token" {
+variable "do_access_token" {
     type = "string"
 }
 
