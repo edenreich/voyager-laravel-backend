@@ -22,10 +22,10 @@ resource "kubernetes_service" "backend" {
 
 resource "kubernetes_service" "mysql" {
   metadata {
-    name = "${var.backend_service_name}"
+    name = "${var.backend_service_name}-database"
     namespace = "default"
     labels = {
-      app = "${var.backend_service_name}"
+      app = "${var.backend_service_name}-database"
     }
   }
 
