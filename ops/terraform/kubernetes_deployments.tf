@@ -1,6 +1,6 @@
 resource "kubernetes_deployment" "backend" {
   metadata {
-    name = "backend-deployment"
+    name = "backend-app-deployment"
     
     labels = {
       app = "backend"
@@ -8,7 +8,7 @@ resource "kubernetes_deployment" "backend" {
   }
 
   spec {
-    replicas = "${var.deployment_replicas_count}"
+    replicas = "${var.deployment_app_replicas_count}"
 
     selector {
       match_labels = {
@@ -61,7 +61,7 @@ resource "kubernetes_deployment" "mysql" {
   }
 
   spec {
-    replicas = "3"
+    replicas = "${var.deployment_database_replicas_count}"
 
     selector {
       match_labels = {
@@ -97,7 +97,7 @@ resource "kubernetes_deployment" "mysql" {
           }
 
           volume_mount {
-            name       = "db-data"
+            name       = "${kubernetes_persistent_volume_claim.db_data.metadata.0.name}"
             mount_path = "/var/lib/mysql"
           }
         }

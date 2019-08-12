@@ -27,7 +27,12 @@ variable "cluster_node_count" {
     type    = "string"
 }
 
-variable "deployment_replicas_count" {
+variable "deployment_app_replicas_count" {
+    default = "1"
+    type    = "string"
+}
+
+variable "deployment_database_replicas_count" {
     default = "1"
     type    = "string"
 }
