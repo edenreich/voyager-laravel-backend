@@ -14,7 +14,6 @@ resource "kubernetes_persistent_volume_claim" "db_data" {
       }
     }
 
-    volume_name        = "db-data"
     storage_class_name = "do-block-storage"
   }
 }

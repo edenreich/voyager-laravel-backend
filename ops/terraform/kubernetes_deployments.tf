@@ -78,7 +78,7 @@ resource "kubernetes_deployment" "mysql" {
 
       spec {
         container {
-          image = "mysql:5.7.27"
+          image = "mysql:5.7"
           name  = "mysql"
 
           env {
@@ -95,6 +95,8 @@ resource "kubernetes_deployment" "mysql" {
             container_port = 3306
             name           = "mysql"
           }
+
+          args = ["--ignore-db-dir=lost+found"]
 
           volume_mount {
             name       = "${kubernetes_persistent_volume_claim.db_data.metadata.0.name}"
